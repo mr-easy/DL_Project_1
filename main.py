@@ -2,6 +2,11 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import sys
+import os
+
+repo_path = os.path.dirname(os.path.abspath(__file__))
+out_sw_1_fp = repo_path + "/Software1.txt"
+out_sw_2_fp = repo_path + "/Software2.txt"
 
 # Uncomment the following lines if tensorflow gives error.
 config = tf.compat.v1.ConfigProto(gpu_options = 
@@ -55,7 +60,7 @@ if(flag == "test"):
     # Software 1 approach
     results_1 = ["fizzbuzz" if v%15 == 0 else "fizz" if v%3 == 0 else "buzz" if v%5 == 0 else str(v) for v in testNumbers]
     #print(results_1)
-    with open("Software1.txt", "w") as f:
+    with open(out_sw_1_fp, "w") as f:
         f.write("\n".join(results_1))
         print("Software1.txt generated.")
         
@@ -73,7 +78,7 @@ if(flag == "test"):
     for i in range(len(testNumbers)):
         results_2.append(["fizzbuzz", "fizz", "buzz", str(testNumbers[i])][predictedClass[i]])        
     
-    with open("Software2.txt", "w") as f:
+    with open(out_sw_2_fp, "w") as f:
         f.write("\n".join(results_2))
         print("Software2.txt generated.")
 
